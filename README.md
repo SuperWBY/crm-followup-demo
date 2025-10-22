@@ -21,7 +21,11 @@ WallTech 是一家专注于跨境物流的 SaaS 平台服务商，为全球电�
 
 ### 🎬 Demo 展示
 
-![CRM Demo](demo.gif)
+<div align="center">
+  <img src="demo.gif" alt="CRM Demo" width="800" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+</div>
+
+> **💡 提示**: 如果GIF显示较小，请点击图片查看完整尺寸
 
 > **演示内容**：
 > - 客户列表浏览和搜索
@@ -29,6 +33,22 @@ WallTech 是一家专注于跨境物流的 SaaS 平台服务商，为全球电�
 > - 新增/编辑跟进记录流程
 > - 数据统计和可视化展示
 > - 响应式设计适配
+
+#### 📹 视频演示（高清版）
+
+如果您觉得GIF显示不够清晰，我们还提供了高清视频演示：
+
+<div align="center">
+  <a href="demo.mp4">
+    <img src="https://img.shields.io/badge/📹-观看高清视频演示-blue?style=for-the-badge&logo=video" alt="观看视频演示">
+  </a>
+</div>
+
+> **视频特点**：
+> - 🎥 高清画质，细节清晰可见
+> - 🔊 包含操作说明和功能介绍
+> - 📱 展示完整的用户交互流程
+> - ⏱️ 时长约2-3分钟，内容精炼
 
 ### 核心功能
 
