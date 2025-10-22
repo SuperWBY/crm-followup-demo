@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跟进记录同步测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .test-section { border: 1px solid #ddd; padding: 15px; margin: 15px 0; border-radius: 5px; }
+        .header { background: #f5f5f5; padding: 20px; border-radius: 5px; margin-bottom: 20px; }
+        button { background: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px; }
+        button:hover { background: #0056b3; }
+        .success { color: green; }
+        .error { color: red; }
+        .followup-item { border: 1px solid #eee; padding: 10px; margin: 5px 0; border-radius: 3px; }
+        .form-group { margin: 10px 0; }
+        .form-group label { display: inline-block; width: 100px; }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 200px; padding: 5px; border: 1px solid #ddd; border-radius: 3px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>跟进记录同步测试页面</h1>
+            <p>测试新增和编辑跟进记录的数据同步功能</p>
+        </div>
+        
+        <div class="test-section">
+            <h3>1. 查看当前跟进记录</h3>
+            <button onclick="loadFollowups()">刷新跟进记录</button>
+            <div id="followups-list"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>2. 新增跟进记录测试</h3>
+            <div class="form-group">
+                <label>跟进类型:</label>
+                <select id="newType">
+                    <option value="电话沟通">电话沟通</option>
+                    <option value="上门拜访">上门拜访</option>
+                    <option value="线上会议">线上会议</option>
+                    <option value="邮件联系">邮件联系</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>跟进内容:</label>
+                <textarea id="newContent" rows="3" placeholder="请输入跟进内容..."></textarea>
+            </div>
+            <div class="form-group">
+                <label>销售人员ID:</label>
+                <select id="newSalesUserId">
+                    <option value="1">张经理 (ID:1)</option>
+                    <option value="2">李总监 (ID:2)</option>
+                    <option value="3">王主管 (ID:3)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>跟进结果:</label>
+                <select id="newResult">
+                    <option value="成功">成功</option>
+                    <option value="待跟进">待跟进</option>
+                    <option value="失败">失败</option>
+                </select>
+            </div>
+            <button onclick="addFollowup()">新增跟进记录</button>
+            <div id="add-result"></div>
+        </div>
+        
+        <div class="test-section">
+            <h3>3. 编辑跟进记录测试</h3>
+            <div class="form-group">
+                <label>跟进记录ID:</label>
+                <input type="number" id="editId" placeholder="输入要编辑的记录ID">
+            </div>
+            <div class="form-group">
+                <label>跟进结果:</label>
+                <select id="editResult">
+                    <option value="成功">成功</option>
+                    <option value="待跟进">待跟进</option>
+                    <option value="失败">失败</option>
+                </select>
+            </div>
+            <button onclick="editFollowup()">更新跟进记录</button>
+            <div id="edit-result"></div>
+        </div>
+    </div>
+
+    <script>
+        const customerId = 1; // 测试客户1
+        
+        async function loadFollowups() {
+            const listDiv = document.getElementById('followups-list');
+            listDiv.innerHTML = '<p>正在加载跟进记录...</p>';
+            
+            try {
+                const response = await fetch(`/api/customers/${customerId}/followups?_t=${Date.now()}`);
+                const followups = await response.json();
+                
+                listDiv.innerHTML = `
+                    <h4>客户${customerId}的跟进记录 (共${followups.length}条):</h4>
+                    ${followups.map(followup => `
+                        <div class="followup-item">
+                            <strong>ID: ${followup.id}</strong> | ${followup.type} | ${followup.result}<br>
+                            内容: ${followup.content}<br>
+                            销售人员ID: ${followup.sales_user_id} | 创建时间: ${new Date(followup.created_at).toLocaleString()}
+                        </div>
+                    `).join('')}
+                `;
+            } catch (error) {
+                listDiv.innerHTML = `<p class="error">❌ 加载失败: ${error.message}</p>`;
+            }
+        }
+        
+        async function addFollowup() {
+            const resultDiv = document.getElementById('add-result');
+            resultDiv.innerHTML = '<p>正在新增跟进记录...</p>';
+            
+            try {
+                const followupData = {
+                    type: document.getElementById('newType').value,
+                    content: document.getElementById('newContent').value || '测试跟进内容',
+                    date: new Date().toISOString(),
+                    sales_user_id: parseInt(document.getElementById('newSalesUserId').value),
+                    duration: Math.floor(Math.random() * 60) + 10,
+                    result: document.getElementById('newResult').value,
+                    next_action: '安排下次跟进'
+                };
+                
+                const response = await fetch(`/api/customers/${customerId}/followups`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(followupData)
+                });
+                
+                if (response.ok) {
+                    const newFollowup = await response.json();
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ 新增成功！记录ID: ${newFollowup.id}</p>
+                        <p>新记录: ${newFollowup.type} | ${newFollowup.result}</p>
+                    `;
+                    // 自动刷新列表
+                    setTimeout(loadFollowups, 1000);
+                } else {
+                    const error = await response.json();
+                    resultDiv.innerHTML = `<p class="error">❌ 新增失败: ${error.detail}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ 新增失败: ${error.message}</p>`;
+            }
+        }
+        
+        async function editFollowup() {
+            const resultDiv = document.getElementById('edit-result');
+            const followupId = document.getElementById('editId').value;
+            
+            if (!followupId) {
+                resultDiv.innerHTML = '<p class="error">❌ 请输入要编辑的记录ID</p>';
+                return;
+            }
+            
+            resultDiv.innerHTML = '<p>正在更新跟进记录...</p>';
+            
+            try {
+                const followupData = {
+                    type: '电话沟通',
+                    content: '更新后的跟进内容',
+                    date: new Date().toISOString(),
+                    sales_user_id: 1,
+                    duration: 30,
+                    result: document.getElementById('editResult').value,
+                    next_action: '继续跟进'
+                };
+                
+                const response = await fetch(`/api/followups/${followupId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(followupData)
+                });
+                
+                if (response.ok) {
+                    const updatedFollowup = await response.json();
+                    resultDiv.innerHTML = `
+                        <p class="success">✅ 更新成功！记录ID: ${updatedFollowup.id}</p>
+                        <p>更新后: ${updatedFollowup.type} | ${updatedFollowup.result}</p>
+                    `;
+                    // 自动刷新列表
+                    setTimeout(loadFollowups, 1000);
+                } else {
+                    const error = await response.json();
+                    resultDiv.innerHTML = `<p class="error">❌ 更新失败: ${error.detail}</p>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p class="error">❌ 更新失败: ${error.message}</p>`;
+            }
+        }
+        
+        // 页面加载时自动加载跟进记录
+        window.onload = function() {
+            loadFollowups();
+        };
+    </script>
+</body>
+</html>
