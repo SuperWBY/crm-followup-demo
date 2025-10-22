@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 import os
 
 # SQLite数据库文件路径
-SQLALCHEMY_DATABASE_URL = "sqlite:///./crm_followup.db"
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./crm_followup.db")
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, 

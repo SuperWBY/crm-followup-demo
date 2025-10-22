@@ -306,9 +306,13 @@ def init_data():
                 
                 result = random.choices(followup_results, weights=result_weights)[0]
                 
+                # 生成跟进记录标题
+                title = f"{followup_type} - {customer.name}"
+                
                 followup = FollowUp(
                     customer_id=customer.id,
                     sales_user_id=sales_user.id,
+                    title=title,
                     type=followup_type,
                     content=content,
                     date=followup_date,
