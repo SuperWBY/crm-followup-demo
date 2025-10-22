@@ -99,12 +99,21 @@ crm-followup-demo/
 - **Docker Compose** 2.0+
 
 #### 一键启动
+
+**对于从GitHub克隆的项目（推荐）:**
 ```bash
 # 克隆项目
-git clone <repository-url>
+git clone https://github.com/SuperWBY/crm-followup-demo.git
 cd crm-followup-demo
 
-# 使用Docker启动脚本（推荐）
+# 使用GitHub克隆专用设置脚本
+chmod +x setup-github-clone.sh
+./setup-github-clone.sh
+```
+
+**对于本地开发项目:**
+```bash
+# 使用Docker启动脚本
 chmod +x docker-start.sh
 ./docker-start.sh
 
@@ -378,6 +387,13 @@ chmod +x stop-local.sh
 #### 1. 502 Bad Gateway 错误
 如果遇到 `502 Bad Gateway` 错误，请尝试：
 
+**对于GitHub克隆的项目:**
+```bash
+# 使用专用设置脚本
+./setup-github-clone.sh
+```
+
+**对于本地项目:**
 ```bash
 # 重新启动服务
 docker-compose down
