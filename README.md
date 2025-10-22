@@ -25,7 +25,7 @@ WallTech 是一家专注于跨境物流的 SaaS 平台服务商，为全球电�
   <img src="demo.gif" alt="CRM Demo" width="800" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
 
-> **⚠️ 注意**: 当前GIF分辨率为400x250，建议查看高清视频演示
+> **✅ 高清演示**: 当前GIF分辨率为800x500，提供清晰的视觉效果
 > **💡 提示**: 点击图片可查看完整尺寸，或观看下方高清视频演示
 
 > **演示内容**：
