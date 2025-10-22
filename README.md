@@ -371,6 +371,60 @@ chmod +x stop-local.sh
    - 设置日志轮转
    - 监控系统资源使用
 
+## 故障排除
+
+### 常见问题
+
+#### 1. 502 Bad Gateway 错误
+如果遇到 `502 Bad Gateway` 错误，请尝试：
+
+```bash
+# 重新启动服务
+docker-compose down
+docker-compose up -d
+
+# 等待服务启动
+sleep 30
+```
+
+#### 2. 没有客户数据
+如果页面显示没有客户数据：
+
+```bash
+# 清理并重新初始化数据库
+docker-compose down -v
+rm -rf backend/data
+mkdir -p backend/data
+docker-compose up --build -d
+```
+
+#### 3. 端口占用问题
+如果端口80或8001被占用：
+
+```bash
+# 检查端口占用
+lsof -i :80
+lsof -i :8001
+
+# 停止占用进程
+sudo kill -9 <PID>
+```
+
+### 详细故障排除
+
+更多故障排除信息请参考：[故障排除指南](troubleshooting.md)
+
+### 快速诊断
+
+```bash
+# 检查服务状态
+docker-compose ps
+
+# 测试API连接
+curl http://localhost:8001/health
+curl http://localhost/api/customers
+```
+
 ## 许可证
 
 MIT License
