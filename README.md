@@ -25,7 +25,8 @@ WallTech 是一家专注于跨境物流的 SaaS 平台服务商，为全球电�
   <img src="demo.gif" alt="CRM Demo" width="800" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
 
-> **💡 提示**: 如果GIF显示较小，请点击图片查看完整尺寸
+> **⚠️ 注意**: 当前GIF分辨率为400x250，建议查看高清视频演示
+> **💡 提示**: 点击图片可查看完整尺寸，或观看下方高清视频演示
 
 > **演示内容**：
 > - 客户列表浏览和搜索
@@ -49,6 +50,28 @@ WallTech 是一家专注于跨境物流的 SaaS 平台服务商，为全球电�
 > - 🔊 包含操作说明和功能介绍
 > - 📱 展示完整的用户交互流程
 > - ⏱️ 时长约2-3分钟，内容精炼
+
+#### 🎯 高分辨率GIF录制指南
+
+如果您想创建更高分辨率的演示GIF，请参考以下指南：
+
+<div align="center">
+  <a href="create-hd-demo.md">
+    <img src="https://img.shields.io/badge/📖-查看录制指南-green?style=for-the-badge&logo=book" alt="查看录制指南">
+  </a>
+</div>
+
+> **推荐设置**：
+> - 🎬 分辨率: 1280x720 (HD) 或 1920x1080 (Full HD)
+> - ⚡ 帧率: 15 FPS
+> - 📦 文件大小: 5-10MB
+> - 🎨 颜色: 256色
+> - ⏱️ 时长: 60-90秒
+
+> **录制工具推荐**：
+> - **LICEcap** (跨平台) - 轻量级，支持高分辨率
+> - **Kap** (macOS) - 开源，界面友好
+> - **ScreenToGif** (Windows) - 功能强大，支持编辑
 
 ### 核心功能
 
