@@ -106,10 +106,6 @@ crm-followup-demo/
 git clone https://github.com/SuperWBY/crm-followup-demo.git
 cd crm-followup-demo
 
-# 使用GitHub克隆专用设置脚本
-chmod +x setup-github-clone.sh
-./setup-github-clone.sh
-```
 
 **对于本地开发项目:**
 ```bash
