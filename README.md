@@ -25,54 +25,6 @@ WallTech 是一家专注于跨境物流的 SaaS 平台服务商，为全球电�
   <img src="demo.gif" alt="CRM Demo" width="800" style="border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 </div>
 
-> **✅ 高清演示**: 当前GIF分辨率为800x500，提供清晰的视觉效果
-> **💡 提示**: 点击图片可查看完整尺寸，或观看下方高清视频演示
-
-> **演示内容**：
-> - 客户列表浏览和搜索
-> - 客户详情页面的跟进记录管理
-> - 新增/编辑跟进记录流程
-> - 数据统计和可视化展示
-> - 响应式设计适配
-
-#### 📹 视频演示（高清版）
-
-如果您觉得GIF显示不够清晰，我们还提供了高清视频演示：
-
-<div align="center">
-  <a href="demo.mp4">
-    <img src="https://img.shields.io/badge/📹-观看高清视频演示-blue?style=for-the-badge&logo=video" alt="观看视频演示">
-  </a>
-</div>
-
-> **视频特点**：
-> - 🎥 高清画质，细节清晰可见
-> - 🔊 包含操作说明和功能介绍
-> - 📱 展示完整的用户交互流程
-> - ⏱️ 时长约2-3分钟，内容精炼
-
-#### 🎯 高分辨率GIF录制指南
-
-如果您想创建更高分辨率的演示GIF，请参考以下指南：
-
-<div align="center">
-  <a href="create-hd-demo.md">
-    <img src="https://img.shields.io/badge/📖-查看录制指南-green?style=for-the-badge&logo=book" alt="查看录制指南">
-  </a>
-</div>
-
-> **推荐设置**：
-> - 🎬 分辨率: 1280x720 (HD) 或 1920x1080 (Full HD)
-> - ⚡ 帧率: 15 FPS
-> - 📦 文件大小: 5-10MB
-> - 🎨 颜色: 256色
-> - ⏱️ 时长: 60-90秒
-
-> **录制工具推荐**：
-> - **LICEcap** (跨平台) - 轻量级，支持高分辨率
-> - **Kap** (macOS) - 开源，界面友好
-> - **ScreenToGif** (Windows) - 功能强大，支持编辑
-
 ### 核心功能
 
 销售人员可以在客户详情页中：
